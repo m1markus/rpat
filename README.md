@@ -55,8 +55,11 @@ If you want to learn more about building native executables, please consult http
 
 ## Provided Code
 
-### RESTEasy JAX-RS
+###CockroachDB
 
-Easily start your RESTful Web Services
+The PostgreSQL Driver needs SSL Certs from Cockroach to connect
 
-[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+```shell script
+/Users/mue/.postgresql/root.crt
+```
+
