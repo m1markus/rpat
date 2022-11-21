@@ -1,5 +1,7 @@
 package ch.m1m.rpat;
 
+import ch.m1m.rpat.persistence.ConfigRow;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -10,6 +12,13 @@ import java.util.List;
 @Path("/hello")
 public class GreetingResource {
 
+    ConfigService configService;
+
+    public GreetingResource(ConfigService configService) {
+        this.configService = configService;
+        //configService.insert(new ConfigRow("key_1", "value_1"));
+    }
+
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
@@ -19,12 +28,8 @@ public class GreetingResource {
     @Path("config")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ConfigItem> helloConfig() {
-        List<ConfigItem> liConfig = new ArrayList<>();
-        liConfig.add(new ConfigItem("key_1", "value_1"));
-        liConfig.add(new ConfigItem("key_2", "value_3"));
-        liConfig.add(new ConfigItem("key_3", "value_3"));
-        liConfig.add(new ConfigItem("key_4", "value_4"));
-        return liConfig;
+    public List<ConfigRow> helloConfig() {
+        //configService.delete(new ConfigRow("key_2", "value_2"));
+        return configService.selectAll();
     }
 }
